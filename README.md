@@ -9,10 +9,8 @@ A brief introduction about the folders and files:
     * `all_funcs.py`: the proposed Spar-Sink method and baselines for OT and UOT.
     * `simu_ot.py`, `simu_uot.py`, `simu_ot_time.py`, and `simu_uot_time.py`: simulation code.
     * `echo_dist.py`, `echo_mds.py`, and `echo_pred.py`: echocardiogram analysis code.
-* `output/`: outputs of `echo_dist.py`;
-    * `dist_mat_health.mat`: WFR distance matrix approximated by Spar-Sink for an individual in the state of health.
-    * `dist_mat_failure.mat`: WFR distance matrix approximated by Spar-Sink for an individual in the state of heart failure.
-    * `dist_mat_arrhythmia.mat`: WFR distance matrix approximated by Spar-Sink for an individual in the state of arrhythmia.
+* `output/`: outputs of `echo_dist.py`.
+    * `dist_mat_health.mat`, `dist_mat_failure.mat`, and `dist_mat_arrhythmia.mat`: WFR distance matrices approximated by Spar-Sink for individuals in the state of health, heart failure, and arrhythmia, respectively.
 
 
 ## Reproducibility
