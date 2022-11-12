@@ -14,7 +14,7 @@ import cv2
 import numpy as np
 import pandas as pd
 import ot.plot
-from all_funcs import wfr_kernel, wfr_distance, spar_sinkhorn_unbalanced, rand_sinkhorn_unbalanced
+from all_funcs import wfr_kernel, wfr_distance, spar_sinkhorn_unbalanced
 from all_funcs import unifNys, nys_sinkhorn_unbalanced, nys_sinkhorn_unbalanced2
 import json
 import os
@@ -136,11 +136,8 @@ K[K!=0] = np.exp(-M[K!=0]/epsilon)
 M[K==0] = -epsilon*np.log(1e-100)
 
 nn = K.shape[0]
-sparsity = np.sum(K==0)/(nn**2)
-nonzero = np.sum(K!=0)
-
-nnzSqrt = int(np.sqrt(nonzero))
-s_list = np.floor([(2**2)*nnzSqrt, (2**3)*nnzSqrt, (2**4)*nnzSqrt, (2**5)*nnzSqrt])
+s0 = 0.001*nn*np.log(nn)**4
+s_list = np.array([1, 2, 2**2, 2**3]) * s0  # subsample size
 s_list = s_list.astype(np.int)
 
 
@@ -208,7 +205,7 @@ for i in range(n):
             b = np.array(b, dtype='uint16') + 1
             w2 = b/np.sum(b)
             
-            WFR = spar_sinkhorn_unbalanced(w1, w2, M, K, s, epsilon, reg_kl)
+            WFR, _ = spar_sinkhorn_unbalanced(w1, w2, M, K, s, epsilon, reg_kl, 'spar-sink')
     
             high[int(j-bg)] = WFR
         
@@ -250,7 +247,7 @@ for i in range(n):
             b = np.array(b, dtype='uint16') + 1
             w2 = b/np.sum(b)
             
-            WFR = rand_sinkhorn_unbalanced(w1, w2, M, K, s, epsilon, reg_kl)
+            WFR, _ = spar_sinkhorn_unbalanced(w1, w2, M, K, s, epsilon, reg_kl, 'rand-sink')
     
             high[int(j-bg)] = WFR
         
@@ -293,11 +290,11 @@ for i in range(n):
             w2 = b/np.sum(b)
             
             R, A = unifNys(K, s)
-            WFR = nys_sinkhorn_unbalanced(a, b, M, R, A, epsilon, reg_kl)
+            WFR, _ = nys_sinkhorn_unbalanced(a, b, M, R, A, epsilon, reg_kl)
             
             if np.isnan(WFR):
                 K_nys = np.dot(np.dot(R, A), R.T)
-                WFR = nys_sinkhorn_unbalanced2(a, b, M, K_nys, epsilon, reg_kl)
+                WFR, _ = nys_sinkhorn_unbalanced2(a, b, M, K_nys, epsilon, reg_kl)
 
             high[int(j-bg)] = WFR
         

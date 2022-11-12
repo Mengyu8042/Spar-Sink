@@ -6,7 +6,6 @@ Three cases: health, heart failure, and arrhythmia
 """
 
 import numpy as np
-import matplotlib.pylab as pl
 import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy.io
@@ -37,12 +36,12 @@ for case in case_list:
     dist_mat = (dist_mat-np.min(dist_mat))/(np.max(dist_mat)-np.min(dist_mat))
     np.fill_diagonal(dist_mat, 0)
     
-    pl.figure(1, (5,5))
+    plt.figure(1, (5,5))
     f, ax = plt.subplots()
     im = ax.imshow(dist_mat)
     f.colorbar(im)
-    pl.title('WFR distance matrix', fontsize=20)
-    pl.show()
+    plt.title('WFR distance matrix', fontsize=20)
+    plt.show()
     
     
     # MDS
@@ -60,14 +59,14 @@ for case in case_list:
     time_len = np.array(range(X_transform.shape[0]))
     
     
-    pl.figure(2, (5,5))
+    plt.figure(2, (5,5))
     f, ax = plt.subplots()
     ax.plot(X_transform[:,0], X_transform[:,1], c = 'grey')
     cmap = sns.cubehelix_palette(as_cmap=True)
     points = ax.scatter(X_transform[:,0], X_transform[:,1], c = time_len, cmap = cmap)
     cbar = f.colorbar(points)
     cbar.set_label('time', fontsize=17)
-    pl.title('MDS in 2D', fontsize=20)
-    pl.xticks([])
-    pl.yticks([])
-    pl.show()
+    plt.title('MDS in 2D', fontsize=20)
+    plt.xticks([])
+    plt.yticks([])
+    plt.show()

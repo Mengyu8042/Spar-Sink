@@ -15,9 +15,9 @@ A brief introduction about the folders and files:
 
 ## Reproducibility
 For simulations in Section 5,
-* you can run `simu_ot.py` to reproduce the results in Figure 2; choose `case_name` among **'C1', 'C2', 'C3'** and choose `epsilon` among **0.1, 0.01, 0.001**;
-* you can run `simu_uot.py` to reproduce the results in Figure 3; choose `case_name` among **'C1', 'C2', 'C3'** and choose `eta_name` among **'R1', 'R2', 'R3'**;
-* you can run `simu_ot_time.py` and `simu_uot_time.py` to reproduce the results in Figure 4.
+* you can run `simu_ot.py` to reproduce the results in Figure 1;
+* you can run `simu_uot.py` to reproduce the results in Figure 2;
+* you can run `simu_ot_time.py` and `simu_uot_time.py` to reproduce the results in Figure 3.
 
 For echocardiogram analysis in Section 6,
 * you can run `echo_dist.py` and `echo_mds.py` to reproduce the results in Figure 6; in `echo_dist.py`, choose `case` among **'health', 'failure', 'arrhythmia'**. Considering that running `echo_dist.py` takes several hours, we provide its outputs in `output/`, and you can directly run `echo_mds.py` using the outputs to reproduce Figure 6.
@@ -36,9 +36,9 @@ Install the following requirements using the `pip` or `conda` command:
 * pandas
 * POT
 * random
+* scikit-learn
 * scipy
 * seaborn
-* sklearn
 * time
 * torch
 
@@ -50,7 +50,6 @@ This toolbox has been created and is maintained by
 * [Mengyu Li](https://github.com/Mengyu8042): limengyu516@ruc.edu.cn
 * Jun Yu: yujunbeta@bit.edu.cn
 * [Tao Li](https://github.com/sherlockLitao): 2019000153lt@ruc.edu.cn
-* Jingyi Zhang: jingyizhang@tsinghua.edu.cn
 * [Cheng Meng](https://github.com/ChengzijunAixiaoli): chengmeng@ruc.edu.cn
 
 Feel free to contact us if any questions.

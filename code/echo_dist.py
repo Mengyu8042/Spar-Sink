@@ -116,10 +116,7 @@ K[K!=0] = np.exp(-M[K!=0]/epsilon)
 M[K==0] = -epsilon*np.log(1e-100)
 
 nn = K.shape[0]
-sparsity = np.sum(K==0)/(nn**2)
-nonzero = np.sum(K!=0)
-nnzSqrt = int(np.sqrt(nonzero))
-s = int((2**5)*nnzSqrt)
+s = int(0.005*nn*np.log(nn)**4)
 
 
 video_sample = video_temp[0]
@@ -142,7 +139,7 @@ for i in range(0, video_len-1):
         b = np.array(b, dtype='uint16') + 1
         w2 = b/np.sum(b)
         
-        WFR = spar_sinkhorn_unbalanced(w1, w2, M, K, s, epsilon, reg_kl)
+        WFR, _ = spar_sinkhorn_unbalanced(w1, w2, M, K, s, epsilon, reg_kl, 'spar-sink')
 
         dist_mat[i,j] = WFR
 
