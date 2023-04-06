@@ -1,5 +1,5 @@
-# Importance Sparsification for Sinkhorn Algorithm with Application in Efficient Echocardiogram Analysis
-This repository includes the implementation of our work **"Importance Sparsification for Sinkhorn Algorithm with Application in Efficient Echocardiogram Analysis"**.
+# Importance Sparsification for Sinkhorn Algorithm
+This repository includes the implementation of our work **"Importance Sparsification for Sinkhorn Algorithm"**.
 
 
 ## Introduction
@@ -7,7 +7,7 @@ A brief introduction about the folders and files:
 * `data/`: the used echocardiogram video dataset downloaded from [EchoNet-Dynamic](https://echonet.github.io/dynamic/).
 * `code/`: methods and implementations.
     * `all_funcs.py`: the proposed Spar-Sink method and baselines for OT and UOT.
-    * `simu_ot.py`, `simu_uot.py`, `simu_ot_time.py`, and `simu_uot_time.py`: simulation code.
+    * `simu_ot.py` and `simu_uot.py`: simulation code.
     * `echo_dist.py`, `echo_mds.py`, and `echo_pred.py`: echocardiogram analysis code.
 * `output/`: outputs of `echo_dist.py`.
     * `dist_mat_health.mat`, `dist_mat_failure.mat`, and `dist_mat_arrhythmia.mat`: WFR distance matrices approximated by Spar-Sink for individuals in the state of health, heart failure, and arrhythmia, respectively.
@@ -15,12 +15,12 @@ A brief introduction about the folders and files:
 
 ## Reproducibility
 For simulations in Section 5,
-* you can run `simu_ot.py` to reproduce the results in Figure 1;
-* you can run `simu_uot.py` to reproduce the results in Figure 2;
-* you can run `simu_ot_time.py` and `simu_uot_time.py` to reproduce the results in Figure 3.
+* you can run `simu_ot.py` to reproduce the results in Figure 2;
+* you can run `simu_uot.py` to reproduce the results in Figure 3.
+
 
 For echocardiogram analysis in Section 6,
-* you can run `echo_dist.py` and `echo_mds.py` to reproduce the results in Figure 6; in `echo_dist.py`, choose `case` among **'health', 'failure', 'arrhythmia'**. Considering that running `echo_dist.py` takes several hours, we provide its outputs in `output/`, and you can directly run `echo_mds.py` using the outputs to reproduce Figure 6.
+* you can run `echo_dist.py` and `echo_mds.py` to reproduce the results in Figure 7; in `echo_dist.py`, choose `case` among **'health', 'failure', 'arrhythmia'**. Considering that running `echo_dist.py` takes several hours, we provide its outputs in `output/`, and you can directly run `echo_mds.py` using the outputs to reproduce Figure 7.
 * you can run `echo_pred.py` to reproduce the results in Table 1; set `n_resize = 1` for panel (a), and set `n_resize = 2` for panel (b). Considering that running the script takes tens of hours, you can decrease the number of samples (e.g., set `n = 20` or `n = 10`) to test it within a limited time.
 
 
@@ -39,7 +39,6 @@ Install the following requirements using the `pip` or `conda` command:
 * scikit-learn
 * scipy
 * seaborn
-* time
 * torch
 
 
